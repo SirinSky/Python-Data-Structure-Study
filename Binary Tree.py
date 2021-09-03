@@ -50,10 +50,12 @@ class BinarySearchTree:
             return node, False
 
         deleted = False
+        # 해당 노드가 삭제할 노드일 경우
         if key == node.data:
             deleted = True
+            # 삭제할 노드가 자식이 두개일 경우
             if node.left and node.right:
-                # replace the node to the leftmost of node.right
+                # 오른쪽 서브 트리에서 가장 왼쪽에 있는 노드를 찾고 교체
                 parent, child = node, node.right
                 while child.left is not None:
                     parent, child = child, child.left
@@ -62,8 +64,10 @@ class BinarySearchTree:
                     parent.left = child.right
                     child.right = node.right
                 node = child
+            # 자식 노드가 하나일 경우 해당 노드와 교체
             elif node.left or node.right:
                 node = node.left or node.right
+            # 자식 노드가 없을 경우 그냥 삭제
             else:
                 node = None
         elif key < node.data:
