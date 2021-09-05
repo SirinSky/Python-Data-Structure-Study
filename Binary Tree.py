@@ -31,16 +31,31 @@ class BinarySearchTree:
         return node
         
     def find(self, key):
-        return self._find_value(self.root, key)
-
-    def _find_value(self, root, key):
-        if root is None or root.data == key:
-            return root is not None
-        elif key < root.data:
-            return self._find_value(root.left, key)
+        self.height = 0
+        self._find_value(self.root, key)
+    
+    def _find_value(self, node, key):
+        self.height += 1
+        
+        #현재 노드가 없다면
+        if node is None:
+            print("The value you are looking for does not exist")
+        
+        #현재 노드가 찾는 값이라면
+        elif node.data == key:
+            print("The value you are looking for is on Height " + str(self.height))
+            
         else:
-            return self._find_value(root.right, key)
+            #현 노드 데이터가 찾는 값보다 크다면
+            if node.data > key:
+                self._find_value(node.left, key)
+                
+            #현 노드 데이터가 찾는 값보다 작다면
+            else:
+                self._find_value(node.right, key)
 
+                
+                
     def delete(self, key):
         self.root, deleted = self._delete_value(self.root, key)
         return deleted
