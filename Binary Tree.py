@@ -56,11 +56,7 @@ class BinarySearchTree:
                 else:
                     self._find_value(node.right, key)
         
-        
-       
-
-                
-                
+    
     def delete(self, key):
         self.root, deleted = self._delete_value(self.root, key)
         return deleted
