@@ -35,24 +35,29 @@ class BinarySearchTree:
         self._find_value(self.root, key)
     
     def _find_value(self, node, key):
-        self.height += 1
         
-        #현재 노드가 없다면
+        #현재 노드가 없다면 - 찾는 값이 없다라고 출력
         if node is None:
             print("The value you are looking for does not exist")
-        
-        #현재 노드가 찾는 값이라면
-        elif node.data == key:
-            print("The value you are looking for is on Height " + str(self.height))
             
         else:
-            #현 노드 데이터가 찾는 값보다 크다면
-            if node.data > key:
-                self._find_value(node.left, key)
-                
-            #현 노드 데이터가 찾는 값보다 작다면
+            self.height += 1
+            
+             #현재 노드가 찾는 값이라면
+            if node.data == key:
+                print("The value you are looking for is on Height " + str(self.height))
+
             else:
-                self._find_value(node.right, key)
+                #찾는 값보다 현재 노드 데이터가 크다면 - 좌측 자식 노드로 재귀
+                if key < node.data:
+                    self._find_value(node.left, key)
+
+                #현 노드 데이터가 찾는 값보다 작다면 - 우측 자식 노드로 재귀
+                else:
+                    self._find_value(node.right, key)
+        
+        
+       
 
                 
                 
@@ -99,8 +104,8 @@ for x in array:
     bst.insert(x)
 
 # Find
-print(bst.find(15)) # True
-print(bst.find(17)) # False
+bst.find(15)
+bst.find(17)
 
 # Delete
 print(bst.delete(55)) # True
