@@ -104,8 +104,8 @@ for x in array:
     bst.insert(x)
 
 # Find
-bst.find(15)
-bst.find(17)
+bst.find(15) # Height 5
+bst.find(17) # Does not Exist
 
 # Delete
 print(bst.delete(55)) # True
