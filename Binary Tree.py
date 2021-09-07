@@ -19,13 +19,20 @@ class BinarySearchTree:
     #외부에서 이 클래스를 import를 하면 '_' 가 앞에 붙어있는 변수나 메소드들은 호출되지 않음.
     #하지만 직접 호출한다면 사용이 가능하에 권'유의 문법'이라고 불림.
     #다른 언어의 private 비슷하다고 보면 되겠다 생각할수도 있지만 private는 외부 접근이 아예 불가능하니...
-    
+        
+        #현 위치에 노드가 없다면
         if node is None:
-            node = Node(data)
+            node = Node(data) #노드를 삽입한다
+            
         else:
+            #삽입하려는 데이타보다 현 위치의 노드의 데이터가 크거나 같으면
             if data <= node.data:
+                #현 위치의 노드의 좌측 자식 노드에 함수를 재귀시킨다
                 node.left = self._insert_value(node.left, data)
+                
+            #삽입하려는 데이타보다 현 위치의 노드의 데이터가 작으면
             else:
+                #현 위치의 노드의 우측 자식 노드에 함수를 재귀시킨다
                 node.right = self._insert_value(node.right, data)
                 
         return node
