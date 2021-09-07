@@ -1,11 +1,11 @@
 class Node:
     def __init__(self, data):
         self.data = data
-        self.left = self.right = None
+        self.left = None
+        self.right = None
         
 class BinarySearchTree:
     
-    #함수 해석: 초기화 함수. 처음 인스턴스될 때 루트 노드를 None으로 설정한다
     def __init__(self): #클래스 내 메소드(함수)에 첫 매개변수로 self를 넣는 것은 일종의 규칙이다 - 자세한건 구글링
         self.root = None
     
@@ -38,6 +38,8 @@ class BinarySearchTree:
         return node
         
     def find(self, key):
+        
+        #height라는 변수를 설정하여 key값이 어느 높이에 있는지 출력시킨다
         self.height = 0
         self._find_value(self.root, key)
     
