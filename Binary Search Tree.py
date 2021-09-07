@@ -71,34 +71,57 @@ class BinarySearchTree:
         return deleted
 
     def _delete_value(self, node, key):
+        
+        #해당 노드가 없으면
         if node is None:
             return node, False
 
         deleted = False
+        
         # 해당 노드가 삭제할 노드일 경우
         if key == node.data:
             deleted = True
-            # 삭제할 노드가 자식이 두개일 경우
+            # 삭제할 노드의 자식이 두개일 경우
             if node.left and node.right:
+                
                 # 오른쪽 서브 트리에서 가장 왼쪽에 있는 노드를 찾고 교체
                 parent, child = node, node.right
+                
                 while child.left is not None:
                     parent, child = child, child.left
+                
+                #찾은 노드(우측 서브 트리에서 가장 왼쪽에 있는 노드, child)의 좌측 자식에, 삭제하려는 노드의 좌측 자식을 연결한다
                 child.left = node.left
+                
+                #만약 찾은 노드(child)의 부모가 삭제하려는 노드가 아니라면
                 if parent != node:
+                    
+                    #찾은 노드의 부모의 좌측 자식 위치(찾은 노드가 있는 위치, child가 원래 있던 위치)에, child의 우측 자식을 연결시킨다
                     parent.left = child.right
+                    #찾은 노드(우측 서브 트리에서 가장 왼쪽에 있는 노드, child)의 우측 자식에, 삭제하려는 노드의 우측 자식을 연결한다
                     child.right = node.right
+                    
                 node = child
+                
             # 자식 노드가 하나일 경우 해당 노드와 교체
             elif node.left or node.right:
                 node = node.left or node.right
             # 자식 노드가 없을 경우 그냥 삭제
             else:
                 node = None
+        
+        #삭제하려는 값이 해당 노드의 값보다 작다면
         elif key < node.data:
+            
+            #해당 노드의 좌측으로 함수를 재귀시킨다
             node.left, deleted = self._delete_value(node.left, key)
+        
+        #삭제하려는 값이 해당 노드의 값보다 크다면
         else:
+            
+            #해당 노드의 우측으로 함수를 재귀시킨다
             node.right, deleted = self._delete_value(node.right, key)
+            
         return node, deleted
         
 array = [40, 4, 34, 45, 14, 55, 48, 13, 15, 49, 47]
@@ -116,4 +139,3 @@ bst.find(17) # Does not Exist
 print(bst.delete(55)) # True
 print(bst.delete(14)) # True
 print(bst.delete(11)) # False
-        
