@@ -47,14 +47,14 @@ class BinarySearchTree:
         
         #현재 노드가 없다면 - 찾는 값이 없다라고 출력
         if node is None:
-            print("The value you are looking for does not exist")
+            print("Doesn't Exist.")
             
         else:
             self.height += 1
             
              #현재 노드가 찾는 값이라면
             if node.data == key:
-                print("The value you are looking for is on Height " + str(self.height))
+                print("Exist. (Height " + str(self.height)+")")
 
             else:
                 #찾는 값보다 현재 노드 데이터가 크다면 - 좌측 자식 노드로 재귀
@@ -73,6 +73,8 @@ class BinarySearchTree:
         
         #해당 노드가 없으면
         if node is None:
+    
+            print ("Can't Delete.(Key value does not Exist)")
             return node
         
         # 해당 노드가 삭제할 노드일 경우
@@ -99,18 +101,18 @@ class BinarySearchTree:
                     target.right = node.right
                     
                 node = target
-                print("Key Node is Deleted and replaced with " + str(target.data))
+                print("Deleted. (Replaced with " + str(node.data) + ")")
                 
             # 자식 노드가 하나일 경우 해당 노드와 교체
             elif node.left or node.right:
                 
                 node = node.left or node.right
-                print("Key Node is Deleted")
+                print("Deleted. (Replaced with " + str(node.data) + ")")
                 
             # 자식 노드가 없을 경우 그냥 삭제
             else:
                 node = None
-                print("Key Node is Deleted")
+                print("Deleted.")
         
         #삭제하려는 값이 해당 노드의 값보다 작다면
         elif key < node.data:
@@ -134,14 +136,14 @@ for x in array:
     bst.insert(x)
 
 # Find
-bst.find(15) # Height 5
-bst.find(17) # Does not Exist
-bst.find(55) #Height 3
+bst.find(15) # Exsit (Height 5)
+bst.find(17) # Doesn't Exist.
+bst.find(55) #Exist (Height 3)
 
 # Delete
-bst.delete(55) # True
-bst.delete(14) # True
-bst.delete(11) # False
+bst.delete(55) # Deleted. (Replaced with 48)
+bst.delete(14) # Deleted. (Replaced with 15)
+bst.delete(11) # Can't Delete.(Key value does not Exist)
 
-bst.find(55) # Does not Exist
-bst.find(14) # Does not Exist
+bst.find(55) # Doesn't Exist.
+bst.find(14) # Doesn't Exist.
