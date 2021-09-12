@@ -13,7 +13,7 @@ class BinarySearchTree:
     def insert(self, data):
         self.root = self._insert_value(self.root, data)
         if self.root is not None:
-        	print("Inserted.")
+        	print("Inserted (" + str(data) + ")")
         else:
         	print("Can't Insert")
         
