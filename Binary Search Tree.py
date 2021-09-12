@@ -12,7 +12,10 @@ class BinarySearchTree:
     
     def insert(self, data):
         self.root = self._insert_value(self.root, data)
-        #return self.root is not None
+        if self.root is not None:
+        	print("Inserted.")
+        else:
+        	print("Can't Insert")
         
     def _insert_value(self, node, data):
     #'_' 가 앞에 붙으면 외부 사용자는 사용하지 말라는 권유의 문법.
