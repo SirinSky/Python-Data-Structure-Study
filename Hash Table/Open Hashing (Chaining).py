@@ -65,10 +65,13 @@ class OpenHash():
 a = OpenHash(10)
 
 a.save('sirin', 'sky')               #저장됨(빈 공간에 저장)
-a.save('serim', 'bradely')           #저장됨(이미 찬 공간에 중복 저장)
+a.save('sion', 'league of legend')   #저장됨(이미 찬 공간에 중복 저장)
 a.save('sirin', 'sky\'s library')    #저장됨(이미 저장되어 있어 값 갱신)
 a.read('sirin')                      #sirin, sky's library
+print(a.hash_table)
 
-a.delete('sirin')                    #해당 값 없음
+a.delete('sirin')                   #삭제 완료
 a.read('sirin')                     #해당 값 없음
-a.read('serim')
+a.read('sion')
+
+print(a.hash_table)
